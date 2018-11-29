@@ -41,7 +41,7 @@ Route::post('auth/login',[
     ]);
 
 Route::get('auth/login',[
-    'as' => 'sessionsw.destroy',
+    'as' => 'sessions.destroy',
     'uses' =>'LoginController@destroy'
 ]);
 
@@ -69,4 +69,4 @@ Route::post('auth/reset',[
 Route::get('auth/confirm/{code}',[
     'as'=>'users.confirm',
     'uses'=>'UsersController@confirm'
-]);
+])->where('code','[\pL-\pN]{60}');

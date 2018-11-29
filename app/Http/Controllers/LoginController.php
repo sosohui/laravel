@@ -11,4 +11,8 @@ class LoginController extends Controller
         auth()->logout();
         return redirect('bbs')->with('message','dsasf');
     }
+
+    public function create(){
+        return __METHOD__;
+    }
 }

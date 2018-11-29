@@ -63,6 +63,6 @@ class UsersController extends Controller
 
         Auth::login($user);
         flash($user->name.'님 환영합니다. 가입 확인되었습니다.');
-        return redirect(route('bbs.index'));
+        return redirect(route('/'));
     }
 }
