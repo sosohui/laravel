@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     //
-    public function destroy(){
-        auth()->logout();
-        return redirect('bbs')->with('message','dsasf');
-    }
+    // public function destroy(){
+    //     auth()->logout();
+    //     return redirect('bbs')->with('message','dsasf');
+    // }
 
-    public function create(){
-        return view('sessions.create');
-    }
+    // public function create(){
+    //     return view('sessions.create');
+    // }
+
+    
 }

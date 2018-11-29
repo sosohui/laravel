@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function (){
     return view('layouts.template');
@@ -68,6 +68,16 @@ Route::post('auth/reset',[
 ]);
 
 Route::get('auth/confirm/{code}',[
-    'as'=>'users.confirm',
-    'uses'=>'UsersController@confirm'
+    'as' => 'users.confirm',
+    'uses' => 'UsersController@confirm'
 ])->where('code','[\pL-\pN]{60}');
+
+Route::get('login/github',[
+    'as' => 'social.get',
+    'uses' => 'SocialController@redirectToProvider',
+]);
+
+Route::get('login/github/callback',[
+    'as' => 'social.callback',
+    'uses' => 'SocialController@handleProviderCallback',
+]);
