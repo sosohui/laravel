@@ -38,10 +38,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="{{route('users.create')}}">REGISTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
+            @guest
+              <a class="nav-link js-scroll-trigger" href="{{route('sessions.create')}}">Login</a>
+            @else
+              <a class="nav-link js-scroll-trigger" href="{{route('sessions.destroy')}}">Logout</a>
+            @endguest
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#education">Education</a>
@@ -58,11 +62,6 @@
         </ul>
       </div>
     </nav>
-    @if(Session::has('message'))
-      <div class="alert alert-info">
-        {{Session::get('message')}}
-      </div>
-    @endif
     <div class="container-fluid p-0">
       @include('flash::message')
       @yield('content')

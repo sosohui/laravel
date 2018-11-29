@@ -13,6 +13,6 @@ class LoginController extends Controller
     }
 
     public function create(){
-        return __METHOD__;
+        return view('sessions.create');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('content')
 <form action="{{route('users.store')}}" method="POST">
-    @csrf
+    {!! csrf_field() !!}
     <div class="form-group {{$errors->has('name')?'has-error':''}}">
         <input type="text" name="name" class="form-control col-md-8 offset-md-1" placeholder="이름" value="{{old('name')}}" autofocus="true">
             {!! $errors->first('name', '<span class="form-error">:message</span>')!!}

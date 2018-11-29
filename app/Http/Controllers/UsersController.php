@@ -41,7 +41,7 @@ class UsersController extends Controller
         });
         flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인하시고 로그인해 주세요.');
 
-        return redirect('bbs');
+        return view('sessions.create');
     }
 
     public function confirm($code){
@@ -53,16 +53,18 @@ class UsersController extends Controller
         //6.로그인
         //7.main페이지로 redirection
         $user = User::whereConfirmCode($code)->first();
+        
         if(!$user){
             flash('가입 확인 실패! 잘못된 정보 입니다.');
             return redirect(route('users.create'));
         }
+
         $user->activated = 1;
         $user ->confirm_code = null;
         $user->save();
-
-        Auth::login($user);
+    
+        auth()->login($user);
         flash($user->name.'님 환영합니다. 가입 확인되었습니다.');
-        return redirect(route('/'));
+        return redirect('/');
     }
 }

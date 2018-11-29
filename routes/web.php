@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('bbs','BoardsController');
-
+Route::get('/', function (){
+    return view('layouts.template');
+});
 
 //사용자 가입
 Route::get('auth/register',[
@@ -29,20 +30,20 @@ Route::post('auth/register',[
     'uses' =>'UsersController@store'
 ]);
 
-//사용자 인증
+//사용자 인증(로그인)
 Route::get('auth/login',[
     'as' => 'sessions.create',
-    'uses' =>'LoginController@create'
+    'uses' =>'SessionsController@create'
 ]);
 
 Route::post('auth/login',[
     'as' => 'sessions.store',
-    'uses' =>'LoginController@store'
-    ]);
+    'uses' =>'SessionsController@store'
+]);
 
-Route::get('auth/login',[
+Route::get('auth/logout',[
     'as' => 'sessions.destroy',
-    'uses' =>'LoginController@destroy'
+    'uses' =>'SessionsController@destroy'
 ]);
 
 //비밀번호 초기화
